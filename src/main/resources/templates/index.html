@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang= en xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="${title}">Title</title>
+    <link rel="stylesheet" th:href="@{css/base.css}">
+</head>
+<body th:class="contain">
+<h1 class=""> Welcome to my ThymeLeaf Project with arrays</h1>
+<ul th:text="${title}"></ul>
+<li th:each = "name : ${teacher}" th:text="${name}"></li>
+</body>
+</html>
