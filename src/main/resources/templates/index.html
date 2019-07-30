@@ -7,7 +7,10 @@
 </head>
 <body th:class="contain">
 <h1 class=""> Welcome to my ThymeLeaf Project with arrays</h1>
+<!--title is the key, list of codecrew is the value-->
 <ul th:text="${title}"></ul>
+<!-- name is the key, teacher is the values-->
 <li th:each = "name : ${teacher}" th:text="${name}"></li>
+<a th:href="@{addStaff}">Add staff</a>
 </body>
 </html>
