@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList; //imports ArrayList
 
 import com.example.demo.models.Data.ToDoDAO;
@@ -53,6 +54,23 @@ public class ToDoController {
         todo.save(new_task); //method in CrudRepo that allows the form to be saved
         return "redirect:";
     }
+
+    @RequestMapping(value="updateTask/{id}", method=RequestMethod.GET)
+    public String updateForm(Model model, @PathVariable int id)
+    {
+        if (todo.existsById(id)) // checks to see if the id exist in the database
+        {
+           model.addAttribute("task",todo.findById(id));
+           return "updateTask";
+       }
+       else
+        {
+            System.out.println("No ID");
+           return "noID";
+        }
+
+    }
+
 
 
 

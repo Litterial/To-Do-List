@@ -1,10 +1,7 @@
 <!DOCTYPE html>
-<html lang= en xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8"/>
-    <title th:text="${title}">Title</title>
-    <link rel="stylesheet" th:href="@{css/base.css}">
-</head>
+<html lang= "en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace ="fragment :: heading"></head>
+
 <body th:class="contain">
 <h1 class=""> Welcome my ToDo List</h1>
 <!--title is the key, list of codecrew is the value-->
