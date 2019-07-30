@@ -6,11 +6,23 @@
     <link rel="stylesheet" th:href="@{css/base.css}">
 </head>
 <body th:class="contain">
-<h1 class=""> Welcome to my ThymeLeaf Project with arrays</h1>
+<h1 class=""> Welcome my ToDo List</h1>
 <!--title is the key, list of codecrew is the value-->
-<ul th:text="${title}"></ul>
+<h1 th:text="${title}"></h1>
 <!-- name is the key, teacher is the values-->
-<li th:each = "name : ${teacher}" th:text="${name}"></li>
-<a th:href="@{addStaff}">Add staff</a>
+<div th:class="grid">
+    <div th:class="item">Task</div>
+    <div th:class="item">Importance</div>
+    <div th:class="item">Urgency</div>
+</div>
+<div th:each = "alltasks : ${task}">
+    <div th:class="grid">
+        <div th:class="item" th:text="${alltasks.task}"></div>
+        <div th:class="item" th:text="${alltasks.important.level}"></div>
+        <div th:class="item" th:text="${alltasks.urgent.level}"></div>
+    </div>
+    <div></div>
+</div>
+<a th:href="@{addTask}">Add task</a>
 </body>
 </html>

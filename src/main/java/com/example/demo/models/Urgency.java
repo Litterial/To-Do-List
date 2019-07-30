@@ -9,4 +9,8 @@ public enum Urgency {
     {
         this.level=level;
     }
+
+    public String getLevel() {
+        return level;
+    }
 }

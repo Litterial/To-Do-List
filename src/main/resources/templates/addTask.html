@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang= en xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="${title}">Title</title>
+    <link rel="stylesheet" th:href="@{css/base.css}">
+</head>
+<body>
+<!-- objects are lowercased-->
+<form method="post" th:object="${toDo}">
+    <!--references the name of the fields in the Model-->
+    <div>
+        <label th:for="task">Task</label>
+        <!--*{...} Selection expression They act on the th:object{...} attribute-->
+        <input type="text" id="task" th:field="*{task}"/>
+        <span th:errors="*{task}"></span>
+    </div>
+    <div>
+        <label th:for="importance">Importance</label>
+        <select th:field="*{important}">
+            <option th:each="importance : ${importance}"
+                    th:text="${importance.level}"
+                    th:value="${importance}">
+            </option>
+        </select>
+    </div>
+
+    </div>
+    <div>
+        <label th:for="urgency">Urgency</label>
+        <select th:field="*{urgent}">
+            <option th:each="urgent : ${urgency}"
+                    th:text="${urgent.level}"
+                    th:value="${urgent}">
+            </option>
+        </select>
+    </div>
+    <input type="submit" value="submit"/>
+</form>
+</body>
+</html>

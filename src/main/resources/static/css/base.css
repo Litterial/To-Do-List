@@ -6,3 +6,20 @@ body{
 {
     margin: 10%;
 }
+
+
+.grid
+{
+    display:grid;
+    grid-template-columns:repeat(3,200px);
+    /*column-gap: 20px;*/
+    /*grid-column-gap: 20px;*/
+    border: 2px solid black;
+    width: fit-content;
+    text-align: center;
+}
+
+.item
+{
+    border:2px solid white;
+}

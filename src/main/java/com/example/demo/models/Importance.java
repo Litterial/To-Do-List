@@ -9,4 +9,8 @@ public enum Importance {
     {
         this.level=level;
     }
+
+    public String getLevel() {
+        return level;
+    }
 }
