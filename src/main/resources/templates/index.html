@@ -14,11 +14,11 @@
 </div>
 <div th:each = "alltasks : ${task}">
     <div th:class="grid">
+<!-- Varibles for ToDO model-->
         <div th:class="item" th:text="${alltasks.task}"></div>
         <div th:class="item" th:text="${alltasks.important.level}"></div>
         <div th:class="item" th:text="${alltasks.urgent.level}"></div>
     </div>
-    <div></div>
 </div>
 <a th:href="@{addTask}">Add task</a>
 </body>

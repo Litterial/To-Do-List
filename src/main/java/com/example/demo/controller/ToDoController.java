@@ -1,8 +1,5 @@
 package com.example.demo.controller;
-
-import java.sql.SQLOutput;
-import java.util.ArrayList; //imports ArrayList
-
+import java.util.ArrayList;
 import com.example.demo.models.Data.ToDoDAO;
 import com.example.demo.models.Importance;
 import com.example.demo.models.ToDo;
@@ -14,7 +11,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.xml.ws.RequestWrapper;
 
 @Controller //controller
 @RequestMapping("") //used to map to index
@@ -56,11 +52,18 @@ public class ToDoController {
     }
 
     @RequestMapping(value="updateTask/{id}", method=RequestMethod.GET)
-    public String updateForm(Model model, @PathVariable int id)
+    public String updateForm(Model model, @PathVariable int id, ArrayList<Integer> ids)
     {
+        model.addAttribute(new ToDo());
+        model.addAttribute("title","Update task");
+        model.addAttribute("importance", Importance.values());
+        model.addAttribute("urgency", Urgency.values());
         if (todo.existsById(id)) // checks to see if the id exist in the database
         {
-           model.addAttribute("task",todo.findById(id));
+
+            ids.add(id);
+            model.addAttribute("task",todo.findAllById(ids));
+
            return "updateTask";
        }
        else

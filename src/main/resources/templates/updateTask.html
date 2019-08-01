@@ -4,8 +4,39 @@
 
 <body>
 <h1>ID found</h1>
-<div th:text=${task.task}></div>
-<div></div>
-<div></div>
+<!--<div th:each = "alltasks : ${task}">-->
+<!--    <div th:class="grid">-->
+<!--        <div th:class="item" th:text="${alltasks.task}"></div>-->
+<!--        <div th:class="item" th:text="${alltasks.important.level}"></div>-->
+<!--        <div th:class="item" th:text="${alltasks.urgent.level}"></div>-->
+<!--    </div>-->
+<!--</div>-->
+<form method="post"  th:each = "updatetask : ${task}" th:object="${toDo}">
+    <!--references the name of the fields in the Model-->
+    <div>
+        <label th:for="task">Task</label>
+        <!--*{...} Selection expression They act on the th:object{...} attribute-->
+        <input type="text" id="task" name="task" th:value="${updatetask.task}"/>
+        <span th:errors="*{task}"></span>
+    </div>
+    <div>
+        <label th:for="importance">Importance</label>
+        <select id="importance" name="importance">
+            <option th:each="importance : ${importance}"
+                    th:text="${importance.level}" th:value="${importance}" th:selected="${importance}==${updatetask.important}"></option>
+        </select>
+    </div>
+
+    </div>
+    <div>
+        <label th:for="urgency">Urgency</label>
+        <select id="urgency" name="urgency">
+            <option th:each="urgency : ${urgency}"
+                    th:text="${urgency.level}" th:value="${urgency}" th:selected="${urgency}==${updatetask.urgent}">
+            </option>
+        </select>
+    </div>
+</form>
+
 </body>
 </html>
