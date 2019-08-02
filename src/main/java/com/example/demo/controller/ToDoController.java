@@ -7,6 +7,7 @@ import com.example.demo.models.Urgency;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller; //import controller
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,7 +35,7 @@ public class ToDoController {
     public String taskForm(Model model)
     {
         model.addAttribute("title","Add new task");
-        model.addAttribute(new ToDo());
+        model.addAttribute("toDo",new ToDo());
         model.addAttribute("importance", Importance.values()); //returns the values of the Enum Importance
         model.addAttribute("urgency", Urgency.values()); // returns the values of the Enum Urgency
         return "addTask"; //sends info to the add task page
@@ -42,11 +43,16 @@ public class ToDoController {
 
     @RequestMapping(value="addTask",method= RequestMethod.POST) //when the user submits the form, the staff member is add to the array and is redirect to the index
     // @ModelAttribute indicates an argument should be retrieved from the model @Valid checks for validation
-    public String submitForm(@ModelAttribute @Valid ToDo new_task, Model model, Errors err)
+    public String submitForm(@Valid @ModelAttribute("toDo")  ToDo new_task, Errors err, Model model)
     {
+        System.out.println("Test");
+        model.addAttribute("todo",new ToDo());
+
         if (err.hasErrors()) //if errors return to the add task page
-        {
+        {   System.out.println("Error");
             model.addAttribute("title","Add new task");
+            model.addAttribute("importance", Importance.values()); //returns the values of the Enum Importance
+            model.addAttribute("urgency", Urgency.values()); // returns the values of the Enum Urgency
             return "addTask";
         }
         todo.save(new_task); //method in CrudRepo that allows the 'entity' to be saved from the frorm
@@ -79,12 +85,17 @@ public class ToDoController {
 
     @RequestMapping(value="updateTask/{id}",method=RequestMethod.POST)
     // provides request information for HTTP servlets
-    public String submitUpdate (@ModelAttribute @Valid ToDo update_task, @PathVariable int id, Model model, HttpServletRequest request, Errors err )
+    public String submitUpdate (@Valid @ModelAttribute("toDo") ToDo update_task, Errors err, @PathVariable int id, HttpServletRequest request,Model model, ArrayList<Integer> ids )
     {
         if (err.hasErrors())
         {
             System.out.println("Error");
-            model.addAttribute("title","Update Task");
+//            model.addAttribute(new ToDo());
+            model.addAttribute("title","Update task");
+            model.addAttribute("importance", Importance.values()); //grabs values from enum Importance
+            model.addAttribute("urgency", Urgency.values()); // grabs values from enum Urgency
+            ids.add(id); // adds id in the array list
+            model.addAttribute("task",todo.findAllById(ids)); //finds all instances of todo with the given id
             return "updateTask";
         }
         else

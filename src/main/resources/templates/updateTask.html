@@ -1,17 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http//www.thymeleaf.org/">
+<html lang= "en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace ="fragment :: heading"></head>
 
-<body>
+<body th:class="contain">
 <h1>ID found</h1>
-<!--<div th:each = "alltasks : ${task}">-->
-<!--    <div th:class="grid">-->
-<!--        <div th:class="item" th:text="${alltasks.task}"></div>-->
-<!--        <div th:class="item" th:text="${alltasks.important.level}"></div>-->
-<!--        <div th:class="item" th:text="${alltasks.urgent.level}"></div>-->
-<!--    </div>-->
-<!--</div>-->
-<form method="post"  th:each = "updatetask : ${task}" th:object="${toDo}">
+<form method="post" th:object="${toDo}" th:each = "updatetask : ${task}">
     <!--references the name of the fields in the Model-->
     <div>
         <label th:for="task">Task</label>
@@ -27,7 +20,6 @@
         </select>
     </div>
 
-    </div>
     <div>
         <label th:for="urgency">Urgency</label>
         <select id="urgency" name="urgency">
