@@ -7,6 +7,7 @@
 </head>
 <body>
 <!-- objects are lowercased-->
+<!--th:object binds form data to an object.-->
 <form method="post" th:object="${toDo}">
     <!--references the name of the fields in the Model-->
     <div>
@@ -18,9 +19,9 @@
     <div>
         <label th:for="importance">Importance</label>
         <select th:field="*{important}">
+            <!--    each tag is used to iterate over a collection of objects        -->
             <option th:each="importance : ${importance}"
-                    th:text="${importance.level}"
-                    th:value="${importance}">
+                    th:text="${importance.level}" th:value="${importance}">
             </option>
         </select>
     </div>
@@ -30,8 +31,7 @@
         <label th:for="urgency">Urgency</label>
         <select th:field="*{urgent}">
             <option th:each="urgent : ${urgency}"
-                    th:text="${urgent.level}"
-                    th:value="${urgent}">
+                    th:text="${urgent.level}" th:value="${urgent}">
             </option>
         </select>
     </div>
