@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http//www.thymeleaf.org/">
+<head th:replace ="fragment :: heading"></head>
+
+<body>
+<form method="post">
+<h1 th:text="${delete}"> </h1>
+    <button>Yes</button>
+</form>
+<a th:href="@{/}">Cancel</a>
+</body>
+</html>

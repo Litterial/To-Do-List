@@ -4,7 +4,9 @@ public enum Importance {
     HIGH("High"),
     LOW("Low");
 
-    private final String level;
+
+
+    private String level;
     Importance(String level)
     {
         this.level=level;
@@ -13,4 +15,7 @@ public enum Importance {
     public String getLevel() {
         return level;
     }
+//    public void setLevel(String level) {
+//        this.level = level;
+//    }
 }

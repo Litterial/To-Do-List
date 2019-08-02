@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller //controller
@@ -74,6 +75,58 @@ public class ToDoController {
 
     }
 
+    @RequestMapping(value="updateTask/{id}",method=RequestMethod.POST)
+    public String submitUpdate (@ModelAttribute @Valid ToDo update_task, @PathVariable int id, Model model, HttpServletRequest request, Errors err )
+    {
+        if (err.hasErrors())
+        {
+            System.out.println("Error");
+            model.addAttribute("title","Update Task");
+            return "updateTask";
+        }
+        else
+        {
+            ToDo oldInstance=todo.findById(id).get();
+            System.out.println(request.getParameter("task"));
+            oldInstance.setTask(request.getParameter("task"));
+            System.out.println(request.getParameter("importance"));
+            oldInstance.setImportant(Importance.valueOf(request.getParameter("importance")));
+            oldInstance.setUrgent(Urgency.valueOf(request.getParameter("urgency")));
+            todo.save(oldInstance);
+
+
+            return "redirect:../";
+        }
+    }
+    @RequestMapping(value="delete/{id}",method = RequestMethod.GET)
+    public String deleteTask(Model model,@PathVariable int id) {
+        model.addAttribute("title", "Task not found");
+        if (todo.existsById(id)) {
+            ToDo currentInstance = todo.findById(id).get();
+            String taskName = currentInstance.getTask();
+            System.out.println(taskName);
+            model.addAttribute("title", "Deleting task");
+            model.addAttribute("delete", "Are you sure you want to delete the task:" + taskName);
+            return "delete";
+        } else {
+            System.out.println("noID");
+            return "noID";
+        }
+    }
+        @RequestMapping(value="delete/{id}",method = RequestMethod.POST)
+        public String confirmDelete(@PathVariable int id)
+        {
+            if(todo.existsById(id))
+            {
+                todo.deleteById(id);
+                return "redirect:../";
+            }
+            else
+            {
+                return "noID";
+            }
+
+    }
 
 
 
