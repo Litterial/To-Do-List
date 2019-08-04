@@ -3,7 +3,7 @@
 <head th:fragment="heading">
     <meta charset="UTF-8"/>
     <title th:text="${title}">Title</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <link rel="stylesheet" th:href="@{../css/bulma.css}">
     <link rel="stylesheet" th:href="@{../css/base.css}">
 </head>
 <body>

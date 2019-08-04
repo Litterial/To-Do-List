@@ -7,17 +7,17 @@
 <!--title is the key, list of codecrew is the value-->
 <h1 th:text="${title}"></h1>
 <!-- name is the key, teacher is the values-->
-<div th:class="grid">
-    <div th:class="item">Task</div>
-    <div th:class="item">Importance</div>
-    <div th:class="item">Urgency</div>
+<div class="columns ">
+    <div class="column is is-three-fifths">Task</div>
+    <div class="column">Importance</div>
+    <div class="column">Urgency</div>
 </div>
 <div th:each = "alltasks : ${task}">
-    <div th:class="grid">
+    <div class="columns">
 <!-- Varibles for ToDO model-->
-        <div th:class="item" th:text="${alltasks.task}"></div>
-        <div th:class="item" th:text="${alltasks.important.level}"></div>
-        <div th:class="item" th:text="${alltasks.urgent.level}"></div>
+        <div class="column is is-three-fifths" th:text="${alltasks.task}"></div>
+        <div class="column" th:text="${alltasks.important.level}"></div>
+        <div class="column" th:text="${alltasks.urgent.level}"></div>
     </div>
 </div>
 <a th:href="@{addTask}">Add task</a>

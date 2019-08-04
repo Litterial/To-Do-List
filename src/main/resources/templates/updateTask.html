@@ -3,33 +3,44 @@
 <head th:replace ="fragment :: heading"></head>
 
 <body th:class="contain">
-<h1>ID found</h1>
 <form method="post" th:object="${toDo}" th:each = "updatetask : ${task}">
     <!--references the name of the fields in the Model-->
-    <div>
-        <label th:for="task">Task</label>
+    <div th:class="field">
+        <label th:class="label" th:for="task">Task</label>
         <!--*{...} Selection expression They act on the th:object{...} attribute-->
-        <input type="text" id="task" name="task" th:value="${updatetask.task}"/>
-        <span th:errors="*{task}"></span>
-    </div>
-    <div>
-        <label th:for="importance">Importance</label>
-        <select id="importance" name="importance">
-            <option th:each="importance : ${importance}"
-                    th:text="${importance.level}" th:value="${importance}" th:selected="${importance}==${updatetask.important}"></option>
-        </select>
+        <div th:class="control">
+            <input class="input" type="text" id="task" name="task" th:value="${updatetask.task}"/>
+            <span th:errors="*{task}"></span>
+        </div>
     </div>
 
-    <div>
-        <label th:for="urgency">Urgency</label>
+    <div th:class="field">
+        <label th:class="label" th:for="importance">Importance</label>
+            <div th:class="control">
+                <div th:class="select">
+                    <select id="importance" name="importance">
+                        <option th:each="importance : ${importance}"
+                                th:text="${importance.level}" th:value="${importance}" th:selected="${importance}==${updatetask.important}">
+
+                        </option>
+                    </select>
+                </div>
+            </div>
+    </div>
+
+    <div th:class="field">
+        <label th:class="label" th:for="urgency">Urgency</label>
+        <div th:class="control"><div th:class="select">
         <select id="urgency" name="urgency">
             <option th:each="urgency : ${urgency}"
                     th:text="${urgency.level}" th:value="${urgency}" th:selected="${urgency}==${updatetask.urgent}">
             </option>
         </select>
+        </div>
+        </div>
     </div>
 
-    <button>Submit</button>
+    <button class="button button is-link">Submit</button>
 </form>
 
 </body>
