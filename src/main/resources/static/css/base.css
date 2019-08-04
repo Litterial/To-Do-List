@@ -1,5 +1,5 @@
 html,body{
-    background:#5eb92f;
+    background: #ffffff;
 }
 
 .contain
@@ -19,7 +19,23 @@ html,body{
     text-align: center;
 }
 
-.item
+.red
 {
-    border:2px solid white;
+    background:red;
+}
+.green
+{
+    background: green;
+}
+
+.middle
+{
+    text-align: center;
+}
+.tab
+{
+    display: inline-block;
+    height: 100%;
+    width: 4%;
+    background: blue;
 }
