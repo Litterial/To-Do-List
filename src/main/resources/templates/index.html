@@ -7,20 +7,33 @@
 <!--title is the key, list of codecrew is the value-->
 <h1 th:text="${title}"></h1>
 <!-- name is the key, teacher is the values-->
-<div class="columns ">
-    <div class="column is is-three-fifths">Task</div>
-    <div class="column">Importance</div>
-    <div class="column">Urgency</div>
+<section class="hero is-primary">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                Primary title
+            </h1>
+            <h2 class="subtitle">
+                Primary subtitle
+            </h2>
+        </div>
+    </div>
+</section>
+<div class="columns bigger">
+    <div class="column is-6 middle">Tasks</div>
+    <div class="column is-2 middle ">Importance</div>
+    <div class="column is-2 middle">Urgency</div>
+    <div class="column middle"> Options</div>
 </div>
     <div th:each = "alltasks : ${task}" class="columns is-variable is-1 bigger">
 <!-- Varibles for ToDO model-->
-        <div class="column is is-three-fifths "><p class= "blue-border gainsboro" th:text="${alltasks.task}"></p></div>
-        <div class="column middle">
+        <div class="column is-6 "><p class= "blue-border gainsboro" th:text="${alltasks.task}"></p></div>
+        <div class="column is-2 middle">
             <p th:if="${alltasks.important.level =='High'}" class=red th:text="${alltasks.important.level}"></p>
             <p th:if="${alltasks.important.level =='Low'}" class=green th:text="${alltasks.important.level}"></p>
 
         </div>
-        <div class="column middle">
+        <div class="column is-2 middle">
             <p th:if="${alltasks.urgent.level =='High'}" class=red th:text="${alltasks.urgent.level}"></p>
             <p th:if="${alltasks.urgent.level =='Low'}" class=green th:text="${alltasks.urgent.level}"></p>
        </div>
