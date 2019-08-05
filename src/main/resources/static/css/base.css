@@ -4,7 +4,7 @@ html,body{
 
 .contain
 {
-    margin: 10% 20%;
+    margin: 10% 15%;
 }
 
 
@@ -32,10 +32,22 @@ html,body{
 {
     text-align: center;
 }
-.tab
+
+.blue-border
 {
-    display: inline-block;
+    border-left:15px solid blue;
+}
+
+.bigger
+{
+    font-size:3rem;
+}
+.gainsboro
+{
+    background: gainsboro;
+    padding-left: 2%;
+}
+.larger
+{
     height: 100%;
-    width: 4%;
-    background: blue;
 }

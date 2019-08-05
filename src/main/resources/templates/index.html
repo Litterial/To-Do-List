@@ -12,9 +12,9 @@
     <div class="column">Importance</div>
     <div class="column">Urgency</div>
 </div>
-    <div th:each = "alltasks : ${task}" class="columns is-variable is-1 ">
+    <div th:each = "alltasks : ${task}" class="columns is-variable is-1 bigger">
 <!-- Varibles for ToDO model-->
-        <div class="column is is-three-fifths red"><div class="tab"></div><span th:text="${alltasks.task}"></span></div>
+        <div class="column is is-three-fifths "><p class= "blue-border gainsboro" th:text="${alltasks.task}"></p></div>
         <div class="column middle">
             <p th:if="${alltasks.important.level =='High'}" class=red th:text="${alltasks.important.level}"></p>
             <p th:if="${alltasks.important.level =='Low'}" class=green th:text="${alltasks.important.level}"></p>
@@ -24,6 +24,12 @@
             <p th:if="${alltasks.urgent.level =='High'}" class=red th:text="${alltasks.urgent.level}"></p>
             <p th:if="${alltasks.urgent.level =='Low'}" class=green th:text="${alltasks.urgent.level}"></p>
        </div>
+        <div class="column middle">
+            <button class ="button is-large larger"><a th:href="@{'updateTask/'+${alltasks.id}}">Edit</a></button>
+        </div>
+        <div class="column middle">
+            <button class ="button is-large larger"><a th:href="@{'delete/'+${alltasks.id}}">Delete</a></button>
+        </div>
     </div>
 
 <a th:href="@{addTask}">Add task</a>
