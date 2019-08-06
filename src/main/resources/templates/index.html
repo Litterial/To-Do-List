@@ -5,17 +5,17 @@
 <body th:class="contain">
 <!--title is the key, list of codecrew is the value-->
 <!-- name is the key, teacher is the values-->
-<div class="task-border">
+<div class="task-border middle">
     <section class="hero purple">
         <div class="hero-body">
             <div class="container"><h1 class="title">To-Do-List</h1></div>
         </div>
     </section>
-    <div class="columns bigger">
-        <div class="column is-6 middle ">Tasks</div>
-        <div class="column is-2 middle ">Importance</div>
-        <div class="column is-2 middle">Urgency</div>
-        <div class="column middle"> Options</div>
+    <div class="columns bigger extraPadding">
+        <div class="column is-6  ">Tasks</div>
+        <div class="column is-2  ">Importance</div>
+        <div class="column is-2 ">Urgency</div>
+        <div class="column "> Options</div>
     </div>
 </div>
     <div th:each = "alltasks : ${task}" class="columns is-variable is-1 bigger">
@@ -43,7 +43,7 @@
 <!--    <a class="bigger sub" th:href="@{addTask}">Add Task</a>-->
 <!--</div>-->
 <!--<br/>-->
-<a class="long-button  noPadding gainsboro round bigger " th:href="@{addTask}">
+<a class="long-button  noPaddingLeft round bigger button is-link " th:href="@{addTask}">
     <span class=" button is-rounded bigger">+</span> <span class="bigger sub">Add Task</span>
 
 </a>

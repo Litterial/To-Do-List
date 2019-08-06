@@ -1,49 +1,57 @@
 <!DOCTYPE html>
 <html lang= "en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace ="fragment :: heading"></head>
-<body th:class="contain">
+<body th:class="formContainer">
 <!-- objects are lowercased-->
 <!--th:object binds form data to an object.-->
-<form method="post" th:object="${toDo}">
-    <!--references the name of the fields in the Model-->
-    <div th:class="field">
-        <label th:class="label" th:for="task">Task</label>
-        <!--*{...} Selection expression They act on the th:object{...} attribute-->
-        <div th:class="control">
-        <span th:errors="*{task}"></span>
-        <input class="input" type="text" id="task" th:field="*{task}"/>
+<div class="">
+    <section class="hero deepskyblue">
+        <div class="hero-body middle">
+            <div class="container"><h1 class="title">Add Task</h1></div>
+        </div>
+    </section>
+    <form  class="formPadding" method="post" th:object="${toDo}">
+        <!--references the name of the fields in the Model-->
+        <div class= "" th:class="field">
+            <label class="label " th:for="task">Task</label>
+            <!--*{...} Selection expression They act on the th:object{...} attribute-->
+            <div th:class="control">
+                <span th:errors="*{task}"></span>
+                <input class="input" type="text" id="task" th:field="*{task}"/>
+            </div>
+
         </div>
 
-    </div>
-
-    <div th:class="field">
-        <label th:class="label" th:for="importance">Importance</label>
+        <div th:class="field">
+            <label class="label" th:for="importance">Importance</label>
             <div th:class="control" >
                 <div th:class="select">
-                        <select th:field="*{important}">
-                         <!--    each tag is used to iterate over a collection of objects        -->
-                            <option th:each="importance : ${importance}"
-                                 th:text="${importance.level}" th:value="${importance}">
-                             </option>
-                     </select>
+                    <select th:field="*{important}">
+                        <!--    each tag is used to iterate over a collection of objects        -->
+                        <option th:each="importance : ${importance}"
+                                th:text="${importance.level}" th:value="${importance}">
+                        </option>
+                    </select>
                 </div>
             </div>
-    </div>
+        </div>
 
-    <div th:class="field">
-        <label th:class="label" th:for="urgency">Urgency</label>
+        <div th:class="field">
+            <label class="label" th:for="urgency">Urgency</label>
             <div th:class="control" >
                 <div th:class="select">
                     <select th:field="*{urgent}">
                         <option th:each="urgent : ${urgency}"
                                 th:text="${urgent.level}" th:value="${urgent}">
                         </option>
-                     </select>
+                    </select>
                 </div>
             </div>
-    </div>
+        </div>
 
-    <input class="button button is-link" type="submit" value="Submit"/>
-</form>
+        <input class="button button is-link" type="submit" value="Submit"/>
+    </form>
+
+</div>
 </body>
 </html>

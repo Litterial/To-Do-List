@@ -5,17 +5,16 @@ public enum Importance {
     LOW("Low");
 
 
-
     private String level;
-    Importance(String level)
-    {
-        this.level=level;
+
+    Importance(String level) {
+        this.level = level;
     }
 
     public String getLevel() {
         return level;
     }
-//    public void setLevel(String level) {
-//        this.level = level;
-//    }
+
+    @Override
+    public String toString() { return level; }
 }

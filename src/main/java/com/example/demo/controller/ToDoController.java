@@ -117,13 +117,37 @@ public class ToDoController {
     }
     @RequestMapping(value="delete/{id}",method = RequestMethod.GET)
     public String deleteTask(Model model,@PathVariable int id) {
+        String importanceLevel;
+        String urgencyLevel;
         model.addAttribute("title", "Task not found");
+
         if (todo.existsById(id)) {
             ToDo currentInstance = todo.findById(id).get();
             String taskName = currentInstance.getTask(); // callback from ToDo
             System.out.println(taskName);
+            Importance taskImportance=currentInstance.getImportant();
+            Urgency taskUrgency=currentInstance.getUrgent();
+            System.out.println(taskImportance);
+
+            if (taskImportance == Importance.HIGH) {
+                importanceLevel = "High";
+            } else {
+                importanceLevel = "Low";
+            }
+            if (taskUrgency == Urgency.HIGH) {
+                urgencyLevel = "High";
+            } else {
+                urgencyLevel = "Low";
+            }
+
+//            String taskUrgency=currentInstance.getUrgent();
+
             model.addAttribute("title", "Deleting task");
-            model.addAttribute("delete", "Are you sure you want to delete the task:" + taskName);
+            model.addAttribute("message", "Are you sure you want to delete this task?" );
+            model.addAttribute("task", taskName );
+            model.addAttribute("importance", importanceLevel);
+            model.addAttribute("urgency", urgencyLevel );
+
             return "delete";
         } else {
             System.out.println("noID");

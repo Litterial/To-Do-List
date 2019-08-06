@@ -1,60 +1,35 @@
 html,body{
     background: #ffffff;
 }
-
+/************************************************************index******************************************************/
 .contain
 {
     margin: 5% 10%;
 }
-
-
-
-.red
-{
-    background:red;
-}
-.green
-{
-    background: green;
-}
-
 .middle
 {
     text-align: center;
-}
-
-.blue-border
-{
-    border-left:15px solid blue;
-}
-
-.purple
-{
-    background: #6633997d;
-}
-
-.task-border
-{
-    border:1px solid #6633997d;
-    border-bottom: none;
-
-
-
 }
 .bigger
 {
     font-size:2.5rem;
 }
-.gainsboro
-{
-    background: gainsboro;
-}
-
+.purple {background: #66339945;}  .task-border {border: 1px solid #66339945;border-bottom: none;}
+/*colors for high and low*/
+.red {background:red;}  .green {background: green;}
+/* colored border for task*/
 .column .blue-border
 {
     border-left:15px solid blue;
     padding-left: 2%;
 }
+
+.gainsboro
+{
+    background: gainsboro;
+}
+
+
 
 .larger
 {
@@ -66,10 +41,15 @@ html,body{
  border-radius: 290486px;
 }
 
-.noPadding
+.noPaddingLeft
 {
     padding-left: 0;
 
+}
+
+.extraPadding
+{
+    padding:1.2% 0;
 }
 
 .sub
@@ -83,4 +63,35 @@ html,body{
     text-align: left;
     border: 0;
     height: fit-content;
+}
+
+a.long-button
+{
+    color: #4a4a4a;
+}
+/*******************************************************Add Task Form****************************************************/
+
+.formContainer
+{
+    margin: 5% 35% 0 35%;
+    border:1px solid deepskyblue;
+}
+
+.formPadding
+{
+    padding:3.5%;
+}
+.deepskyblue
+{
+    background: deepskyblue;
+}
+
+.grid
+{
+    display: grid;
+}
+
+.cancel
+{
+    margin-left:5%;
 }

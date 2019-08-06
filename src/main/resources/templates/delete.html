@@ -2,11 +2,38 @@
 <html lang="en" xmlns:th="http//www.thymeleaf.org/">
 <head th:replace ="fragment :: heading"></head>
 
-<body>
+<body class="contain">
+<div class="task-border middle">
+    <section class="hero purple">
+        <div class="hero-body">
+            <div class="container"><h1 class="title" th:text="${message}"></h1></div>
+        </div>
+    </section>
+    <div class="columns bigger extraPadding">
+        <div class="column is-6  ">Tasks</div>
+        <div class="column">Importance</div>
+        <div class="column ">Urgency</div>
+    </div>
+</div>
 <form method="post">
-<h1 th:text="${delete}"> </h1>
-    <button>Yes</button>
+    <div class="columns is-variable is-1 bigger">
+        <!-- Varibles for ToDO model-->
+        <div class="column is-6 "><p class= "blue-border gainsboro" th:text="${task}"></p></div>
+        <div class="column middle">
+            <p th:if="${importance == 'High'}" class=red th:text="${importance}"></p>
+            <p th:if="${importance == 'Low'}" class=green th:text="${importance}"></p>
+
+        </div>
+        <div class="column middle">
+            <p th:if="${urgency == 'High'}" class=red th:text="${urgency}"></p>
+            <p th:if="${urgency == 'Low'}" class=green th:text="${urgency}"></p>
+        </div>
+
+    </div>
+    <div class="grid">
+        <div><button class="button is-danger is-large">Yes</button><a class=" cancel button is-link is-large" th:href="@{/}">Cancel</a></div>
+    </div>
 </form>
-<a th:href="@{/}">Cancel</a>
+
 </body>
 </html>
