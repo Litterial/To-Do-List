@@ -2,8 +2,14 @@
 <html lang= "en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace ="fragment :: heading"></head>
 
-<body th:class="contain">
-<form method="post" th:object="${toDo}" th:each = "updatetask : ${task}">
+<body th:class="formContainer">
+<div class="">
+    <section class="hero deepskyblue">
+        <div class="hero-body middle">
+            <div class="container"><h1 class="title">Update Task</h1></div>
+        </div>
+    </section>
+<form class= "formPadding" method="post" th:object="${toDo}" th:each = "updatetask : ${task}">
     <!--references the name of the fields in the Model-->
     <div th:class="field">
         <label th:class="label" th:for="task">Task</label>
@@ -15,10 +21,11 @@
     </div>
 
     <div th:class="field">
-        <label th:class="label" th:for="importance">Importance</label>
+        <label th:class="label" th:for="important">Importance</label>
             <div th:class="control">
                 <div th:class="select">
-                    <select id="importance" name="importance">
+                    <select  required id="important" name="important">
+                        <span th:errors="*{important}"></span>
                         <option th:each="importance : ${importance}"
                                 th:text="${importance.level}" th:value="${importance}" th:selected="${importance}==${updatetask.important}">
 
@@ -29,9 +36,10 @@
     </div>
 
     <div th:class="field">
-        <label th:class="label" th:for="urgency">Urgency</label>
+        <label th:class="label" th:for="urgent">Urgency</label>
         <div th:class="control"><div th:class="select">
-        <select id="urgency" name="urgency">
+        <select required id="urgent" name="urgent">
+            <span th:errors="*{urgent}"></span>
             <option th:each="urgency : ${urgency}"
                     th:text="${urgency.level}" th:value="${urgency}" th:selected="${urgency}==${updatetask.urgent}">
             </option>
@@ -42,6 +50,6 @@
 
     <button class="button button is-link">Submit</button>
 </form>
-
+</div>
 </body>
 </html>

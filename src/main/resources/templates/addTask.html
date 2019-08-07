@@ -28,8 +28,9 @@
 
             <div th:class="control" >
                 <div th:class="select">
-                    <select th:field="*{important}">
+                    <select th:field="*{important}" required>
                         <!--    each tag is used to iterate over a collection of objects        -->
+                        <option value="">Select a Level</option>
                         <option th:each="importance : ${importance}"
                                 th:text="${importance.level}" th:value="${importance}">
                         </option>
@@ -43,7 +44,8 @@
             <span th:errors="*{urgent}"></span>
             <div th:class="control" >
                 <div th:class="select">
-                    <select th:field="*{urgent}">
+                    <select th:field="*{urgent}" required>
+                        <option value="">Select a Level</option>
                         <option th:each="urgent : ${urgency}"
                                 th:text="${urgent.level}" th:value="${urgent}">
                         </option>

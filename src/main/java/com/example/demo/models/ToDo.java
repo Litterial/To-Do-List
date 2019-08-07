@@ -1,5 +1,7 @@
 package com.example.demo.models;
 
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,7 +19,11 @@ public class ToDo {
     @NotNull // this field cannot be null
     @Size(min=5, max=50, message="Task must have a total character length between 5 and 50.") //error message
     private String task;
+
+    @NotNull
     private Importance important;
+
+    @NotNull
     private Urgency urgent;
 
     public ToDo(String task) // constructor when a task is the argument

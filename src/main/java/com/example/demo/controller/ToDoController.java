@@ -89,8 +89,10 @@ public class ToDoController {
     {
         if (err.hasErrors())
         {
+            System.out.println(request.getParameter("importance"));
             System.out.println("Error");
 //            model.addAttribute(new ToDo());
+
             model.addAttribute("title","Update task");
             model.addAttribute("importance", Importance.values()); //grabs values from enum Importance
             model.addAttribute("urgency", Urgency.values()); // grabs values from enum Urgency
@@ -103,12 +105,12 @@ public class ToDoController {
             ToDo oldInstance=todo.findById(id).get(); //gets the instance of the object based off the id
             System.out.println(request.getParameter("task"));
             oldInstance.setTask(request.getParameter("task"));//gets value "task" from the body of the form
-            System.out.println(request.getParameter("importance"));
+            System.out.println(request.getParameter("important"));
             //in this example since Important and Urgent are enums, they accept enum values
             //Enum.valueOf() accepts a string and converts it to an enum
             //gets value "importance" from the body of the form
-            oldInstance.setImportant(Importance.valueOf(request.getParameter("importance")));
-            oldInstance.setUrgent(Urgency.valueOf(request.getParameter("urgency")));
+            oldInstance.setImportant(Importance.valueOf(request.getParameter("important")));
+            oldInstance.setUrgent(Urgency.valueOf(request.getParameter("urgent")));
             todo.save(oldInstance); //saves old instance
 
 
