@@ -15,6 +15,5 @@ public enum Importance {
         return level;
     }
 
-    @Override
-    public String toString() { return level; }
+
 }

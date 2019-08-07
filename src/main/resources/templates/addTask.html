@@ -24,6 +24,8 @@
 
         <div th:class="field">
             <label class="label" th:for="importance">Importance</label>
+            <span th:errors="*{important}"></span>
+
             <div th:class="control" >
                 <div th:class="select">
                     <select th:field="*{important}">
@@ -38,6 +40,7 @@
 
         <div th:class="field">
             <label class="label" th:for="urgency">Urgency</label>
+            <span th:errors="*{urgent}"></span>
             <div th:class="control" >
                 <div th:class="select">
                     <select th:field="*{urgent}">
